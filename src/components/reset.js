@@ -3,7 +3,7 @@ var React = require('react');
 class Reset extends React.Component{
     render(){
         return(
-            <h1>RESET COMPONENT</h1>
+            <h2>RESET COMPONENT</h2>
         );
     }
 }

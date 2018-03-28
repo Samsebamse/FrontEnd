@@ -3,7 +3,7 @@ var React = require('react');
 class Add extends React.Component{
     render(){
         return(
-            <h1>ADD COMPONENT</h1>
+            <h2>ADD COMPONENT</h2>
         );
     }
 }

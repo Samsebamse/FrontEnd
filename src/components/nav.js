@@ -1,7 +1,5 @@
 var React = require('react');
-var ReactRouter = require('react-router-dom');
-var NavLink = ReactRouter.NavLink;
-
+var NavLink = require('react-router-dom').NavLink;
 
 class Nav extends React.Component{
     render(){

@@ -3,7 +3,7 @@ var React = require('react');
 class Subtract extends React.Component{
     render(){
         return(
-            <h1>SUBTRACT COMPONENT</h1>
+            <h2>SUBTRACT COMPONENT</h2>
         );
     }
 }
