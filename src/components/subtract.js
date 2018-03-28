@@ -1,11 +1,8 @@
-var React = require('react');
+import React from "react";
 
-class Subtract extends React.Component{
-    render(){
-        return(
-            <h2>SUBTRACT COMPONENT</h2>
-        );
-    }
+
+export const Subtract = (props) => {
+    return(
+        <h2>SUBTRACT COMPONENT</h2>
+    );
 }
-
-module.exports = Subtract;

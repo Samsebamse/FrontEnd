@@ -1,11 +1,8 @@
-var React = require('react');
+import React from "react";
 
-class Reset extends React.Component{
-    render(){
-        return(
-            <h2>RESET COMPONENT</h2>
-        );
-    }
+
+export const Reset = (props) => {
+    return(
+        <h2>RESET COMPONENT</h2>
+    );
 }
-
-module.exports = Reset;

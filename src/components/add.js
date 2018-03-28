@@ -1,11 +1,9 @@
-var React = require('react');
+import React from "react";
 
-class Add extends React.Component{
-    render(){
-        return(
-            <h2>ADD COMPONENT</h2>
-        );
-    }
+
+export const Add = (props) => {
+    return(
+        <h2>ADD COMPONENT</h2>
+    );
 }
 
-module.exports = Add;
