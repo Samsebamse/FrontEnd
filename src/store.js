@@ -1,14 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
+import promise from "redux-promise-middleware";
+import thunk from "redux-thunk";
 
-import mathReducer from "./reducers/mathReducer";
+import { mathReducer } from "./reducers/mathReducer";
 
 export const store = createStore(combineReducers(
-        {mathReducer}
+        {math: mathReducer}
     ),
     {}, 
-    applyMiddleware(createLogger())
+    applyMiddleware(createLogger(), promise(), thunk)
 );
-
-store.dispatch({type: 'ADD', playload: 800});
 

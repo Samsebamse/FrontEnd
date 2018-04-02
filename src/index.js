@@ -1,14 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-
+import React, { Component } from "react";
+import { render } from "react-dom";
 import App from "./containers/app";
 
-import {store} from "./store";
+//Redux imports
+import { Provider } from "react-redux";
+import { store } from "./store";
 
-ReactDOM.render(
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+//ReactDOM.render
+render(
     <Provider store={store}>
-    <App />
+        <App />
     </Provider>,
     document.getElementById('app')
 );

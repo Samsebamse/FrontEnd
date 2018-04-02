@@ -1,8 +1,13 @@
 import React from "react";
+import { Button } from 'reactstrap';
 
 
-export const Reset = (props) => {
+export const ResetComp = (props) => {
     return(
-        <h2>RESET COMPONENT</h2>
+        <div>
+            <h2>RESET COMPONENT</h2>
+            <h4>{props.resResult.result}</h4>
+            <Button color="warning" onClick={props.buttonClicked}>RESET</Button>
+        </div>
     );
 }

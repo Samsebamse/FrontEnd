@@ -1,71 +1,65 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { Nav } from "../components/nav";
-import { Add } from "../components/add";
-import { Subtract } from "../components/subtract";
-import { Reset } from "../components/reset";
+import { NavComp } from "../components/nav";
+import { AddComp } from "../components/add";
+import { SubtractComp } from "../components/subtract";
+import { ResetComp } from "../components/reset";
+
+import { addAction, subtractAction, resetAction } from "../actions/actions";
 
 
-class App extends React.Component{
-    
-   constructor(props){
-       super(props);
-   }
+class App extends Component{
    
-    Home(){
+    constructor(){
+        super();
+    }
+
+    Home(result){
         return(
             <div>
-                <h1>HOME COMPONENT</h1>  
+                <h1>HOME COMPONENT</h1>
+                <h2>{result}</h2>
             </div>
         );
     }
 
-    componentWillMount(){
-        this.props.addprop(100);
-        this.props.addprop(100);
-        this.props.deleteprop(180);
-        console.log(this.props.math.result);
-    }
-    
     render(){
-       
         return(    
             <Router>
                 <div>
-                    <Nav />
+                    <NavComp />
                     <Switch>
-                        <Route exact path="/" component={this.Home}/>
-                        <Route path="/add" component={Add}/>
-                        <Route path="/subtract" component={Subtract}/>
-                        <Route path="/reset" component={Reset}/>
+                        <Route exact path="/" render={() => this.Home(this.props.math.result)} />
+                        <Route path="/add" render={() => (<AddComp addResult={this.props.math} buttonClicked={() => this.props.addprop(1)} />)} />
+                        <Route path="/subtract" render={() => (<SubtractComp subResult={this.props.math} buttonClicked={() => this.props.subtractprop(1)} />)}/>
+                        <Route path="/reset" render={() => (<ResetComp resResult={this.props.math} buttonClicked={() => this.props.resetprop()} />)} />
                     </Switch>
-                </div>
-            </Router>  
+                </div>              
+            </Router>   
         );
+            
     }
+    
 }
 
 const mapStateToProps = (state) => {
     return {
-        math: state.mathReducer
+        math: state.math
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         addprop: (integer) => {
-            dispatch({
-                type: 'ADD',
-                payload: integer
-            });
+            dispatch(addAction(integer));
         },
-        deleteprop: (integer) => {
-            dispatch({
-                type: 'SUBTRACT',
-                payload: integer
-            });
+        subtractprop: (integer) => {
+            dispatch(subtractAction(integer));
+        },
+        resetprop: () => {
+            dispatch(resetAction());
         }
     };
 };
