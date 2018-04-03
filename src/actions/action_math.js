@@ -1,19 +1,20 @@
-export function addAction(integer){
+export const addAction = (integer) => {
     return { 
         type: 'ADD',
         payload: integer
     };   
 }
 
-export function subtractAction(integer){
+export const subtractAction = (integer) => {
     return { 
         type: 'SUBTRACT',
         payload: integer
     };   
 }
 
-export function resetAction(){
+export const resetAction = () => {
     return { 
         type: 'RESET',
+        payload: 0
     };   
 }

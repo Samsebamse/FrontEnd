@@ -1,9 +1,9 @@
-export const mathReducer = (state = { result: 0, lastValues: []}, aciton) => {
-    switch(aciton.type){
+export const mathReducer = (state = { result: 0, lastValues: [] }, action) => {
+    switch(action.type){
         case 'ADD':
             return {
                 ...state,
-                result: state.result + aciton.payload,
+                result: state.result + action.payload,
                 lastValues: [...state.lastValues, state.result]
             };
             break;
@@ -11,7 +11,7 @@ export const mathReducer = (state = { result: 0, lastValues: []}, aciton) => {
         case 'SUBTRACT':
             return{
                 ...state,
-                result: state.result - aciton.payload,
+                result: state.result - action.payload,
                 lastValues: [...state.lastValues, state.result]
             };
             break;
@@ -19,8 +19,8 @@ export const mathReducer = (state = { result: 0, lastValues: []}, aciton) => {
         case 'RESET':
             return{
                 ...state,
-                result: 0,
-                lastValues: [...state.lastValues, 0]
+                result: action.payload,
+                lastValues: [...state.lastValues, action.payload]
             };
             break;
         default: state;

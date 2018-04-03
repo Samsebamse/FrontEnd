@@ -2,20 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { NavComp } from "../components/nav";
+import NavComp from "../containers/nav"
 import { AddComp } from "../components/add";
 import { SubtractComp } from "../components/subtract";
 import { ResetComp } from "../components/reset";
 
-import { addAction, subtractAction, resetAction } from "../actions/actions";
-
+import { addAction, subtractAction, resetAction } from "../actions/action_math";
 
 class App extends Component{
    
-    constructor(){
-        super();
-    }
-
     Home(result){
         return(
             <div>

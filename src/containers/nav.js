@@ -1,32 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
+import { collapseAction } from "../actions/action_navbar";
 
-export class NavComp extends Component{
 
-    constructor() {
-        super();
-    
-        this.toggleNavbar = this.toggleNavbar.bind(this);
-        this.state = {
-          collapsed: true
-        };
-      }
-
-    toggleNavbar() {
-        this.setState({
-          collapsed: !this.state.collapsed
-        });
-    }
+class NavComp extends Component{
 
     render(){
         return(
             <div>
                 <Navbar color="faded" light>
                     <NavbarBrand href="/" className="ml-auto"></NavbarBrand>
-                    <NavbarToggler onClick={this.toggleNavbar} />
-                    <Collapse isOpen={!this.state.collapsed} navbar >
+                    <NavbarToggler onClick={() => this.props.togglenav()} />
+                    <Collapse isOpen={this.props.toggle.isCollapsed} navbar >
                         <Nav navbar >
                             <div className="ml-auto">
                             <NavItem>
@@ -46,23 +34,24 @@ export class NavComp extends Component{
                     </Collapse>
                 </Navbar>
             </div>
-        );
+        );     
     } 
 }
 
 
-        // <ul>
-        //     <li>
-        //         <NavLink activeClassName="active" to="/"> Home </NavLink>
-        //     </li>
-        //     <li>
-        //         <NavLink activeClassName="active" to="/add"> Add </NavLink>
-        //     </li>
-        //     <li>
-        //         <NavLink activeClassName="active" to="/subtract"> Subtract </NavLink>
-        //     </li>
-        //     <li>
-        //         <NavLink activeClassName="active" to="/reset"> Reset </NavLink>
-        //     </li>
-        // </ul>
+const mapStateToProps = (state) => {
+    return {
+        toggle: state.toggle
+    };
+};
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        togglenav: () => {
+            dispatch(collapseAction());
+        }
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavComp);
