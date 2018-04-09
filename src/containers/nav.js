@@ -14,7 +14,7 @@ class NavComp extends Component{
                 <Navbar color="faded" light>
                     <NavbarBrand href="/" className="ml-auto"></NavbarBrand>
                     <NavbarToggler onClick={() => this.props.togglenav()} />
-                    <Collapse isOpen={this.props.toggle.isCollapsed} navbar >
+                    <Collapse isOpen={this.props.toggle.isOpen} navbar >
                         <Nav navbar >
                             <div className="ml-auto">
                             <NavItem>

@@ -1,8 +1,8 @@
-export const navbarReducer = (state = { isCollapsed: true }, action) => {
+export const navbarReducer = (state = { isOpen: false }, action) => {
     if(action.type === 'TOGGLE'){
         return {
             ...state,
-            isCollapsed: !state.isCollapsed
+            isOpen: !state.isOpen
         };
     }
     return state;
